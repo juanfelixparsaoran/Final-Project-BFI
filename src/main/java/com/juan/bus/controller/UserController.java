@@ -1,7 +1,6 @@
 package com.juan.bus.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -12,12 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import com.juan.bus.models.Agency;
-import com.juan.bus.models.Bus;
 import com.juan.bus.models.ERole;
 import com.juan.bus.models.Role;
 import com.juan.bus.models.User;
-import com.juan.bus.payload.request.SignupCustomRequest;
 import com.juan.bus.payload.request.SignupRequest;
 import com.juan.bus.payload.request.UserCustomRequest;
 import com.juan.bus.payload.request.UserPasswordRequest;
@@ -32,7 +28,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
-
 
 @CrossOrigin(origins = "*", maxAge = 3600, methods = { RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET })
 @RestController
@@ -56,7 +51,7 @@ public class UserController {
 
 	@Autowired
 	JwtUtils jwtUtils;
-	
+
 	@GetMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
@@ -74,9 +69,9 @@ public class UserController {
 		if (userRepository.existsByEmail(signupRequest.getEmail())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
-		
-		User user = new User(signupRequest.getUsername(),signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()),
-				signupRequest.getFirstName(), signupRequest.getLastName(),
+
+		User user = new User(signupRequest.getUsername(), signupRequest.getEmail(),
+				encoder.encode(signupRequest.getPassword()), signupRequest.getFirstName(), signupRequest.getLastName(),
 				signupRequest.getMobileNumber());
 
 		Set<String> strRoles = signupRequest.getRole();
@@ -104,7 +99,6 @@ public class UserController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
-
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}
@@ -143,16 +137,16 @@ public class UserController {
 
 		return ResponseEntity.ok(updatedUser);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> deleteUserById(@PathVariable(value = "id") Long id){
+	public ResponseEntity<?> deleteUserById(@PathVariable(value = "id") Long id) {
 		User user = userRepository.findById(id).get();
 		if (user == null) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		userRepository.delete(user);
 		return ResponseEntity.ok("Sukses delete");
 	}

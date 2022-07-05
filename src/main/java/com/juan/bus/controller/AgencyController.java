@@ -1,8 +1,5 @@
 package com.juan.bus.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +30,7 @@ public class AgencyController {
 
 	@Autowired
 	AgencyRepository agencyRepository;
-	
+
 	@Autowired
 	UserRepository userRepository;
 
@@ -52,10 +49,11 @@ public class AgencyController {
 	public ResponseEntity<?> addAgencyByUserId(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody AgencyRequest agencyCustomRequest) {
 		User user = userRepository.findById(id).get();
-		Agency agency = new Agency(agencyCustomRequest.getCode(), agencyCustomRequest.getDetails(), agencyCustomRequest.getName(),user);
+		Agency agency = new Agency(agencyCustomRequest.getCode(), agencyCustomRequest.getDetails(),
+				agencyCustomRequest.getName(), user);
 		return ResponseEntity.ok(agencyRepository.save(agency));
 	}
-	
+
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
@@ -73,15 +71,15 @@ public class AgencyController {
 
 		return ResponseEntity.ok(updatedAgency);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-	public ResponseEntity<?> deleteAgencyById(@PathVariable(value = "id") Long id){
+	public ResponseEntity<?> deleteAgencyById(@PathVariable(value = "id") Long id) {
 		Agency agency = agencyRepository.findById(id).get();
 		if (agency == null) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		agencyRepository.delete(agency);
 		return ResponseEntity.ok(agency);
 	}

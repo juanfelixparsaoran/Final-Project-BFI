@@ -1,5 +1,6 @@
 Nama 			: Juan Felix Parsaoran Tarigan</br>
-Kode Peserta 	: JVSB001ONL017
+Kode Peserta 	: JVSB001ONL017</br>
+Link github		: https://github.com/juanfelixparsaoran/Final-Project-BFI
 
 
 ##FINAL PROJECT - BUS BOOKING REST API

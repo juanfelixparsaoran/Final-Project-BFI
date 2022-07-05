@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.juan.bus.models.Bus;
 import com.juan.bus.models.Stop;
-import com.juan.bus.payload.request.BusCustomRequest;
 import com.juan.bus.repository.StopRepository;
 
 import io.swagger.annotations.*;
@@ -43,12 +41,11 @@ public class StopController {
 	public ResponseEntity<?> addStop(@Valid @RequestBody Stop stop) {
 		return ResponseEntity.ok(stopRepository.save(stop));
 	}
-	
+
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> updateStopById(@PathVariable(value = "id") Long id,
-			@Valid @RequestBody Stop requestStop) {
+	public ResponseEntity<?> updateStopById(@PathVariable(value = "id") Long id, @Valid @RequestBody Stop requestStop) {
 		Stop stop = stopRepository.findById(id).get();
 		if (stop == null) {
 			return ResponseEntity.notFound().build();
@@ -61,16 +58,16 @@ public class StopController {
 
 		return ResponseEntity.ok(updatedStop);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> deleteStopById(@PathVariable(value = "id") Long id){
+	public ResponseEntity<?> deleteStopById(@PathVariable(value = "id") Long id) {
 		Stop stop = stopRepository.findById(id).get();
 		if (stop == null) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		stopRepository.delete(stop);
 		return ResponseEntity.ok(stop);
 	}

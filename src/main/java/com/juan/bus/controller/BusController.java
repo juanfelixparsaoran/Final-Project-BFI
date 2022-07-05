@@ -1,7 +1,6 @@
 package com.juan.bus.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -55,7 +54,7 @@ public class BusController {
 				agency);
 		return ResponseEntity.ok(busRepository.save(bus));
 	}
-	
+
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
@@ -73,19 +72,18 @@ public class BusController {
 
 		return ResponseEntity.ok(updatedBus);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> deleteBusById(@PathVariable(value = "id") Long id){
+	public ResponseEntity<?> deleteBusById(@PathVariable(value = "id") Long id) {
 		Bus bus = busRepository.findById(id).get();
 		if (bus == null) {
 			return ResponseEntity.notFound().build();
 		}
-		
+
 		busRepository.delete(bus);
 		return ResponseEntity.ok(bus);
 	}
 
 }
-

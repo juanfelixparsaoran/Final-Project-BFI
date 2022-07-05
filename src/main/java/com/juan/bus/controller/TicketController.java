@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.juan.bus.models.Stop;
 import com.juan.bus.models.Ticket;
 import com.juan.bus.models.TripSchedule;
 import com.juan.bus.models.User;
@@ -30,17 +29,15 @@ import io.swagger.annotations.Authorization;
 @RestController
 @RequestMapping("/api/v1/ticket")
 public class TicketController {
-	
+
 	@Autowired
 	UserRepository userRepository;
-	
+
 	@Autowired
 	TripScheduleRepository tripScheduleRepository;
-	
+
 	@Autowired
 	TicketRepository ticketRepository;
-	
-	
 
 	@PostMapping("/book")
 	@PreAuthorize("hasAnyRole('ADMIN','USER')")
@@ -48,17 +45,17 @@ public class TicketController {
 	public ResponseEntity<?> bookTicket(@Valid @RequestBody TicketRequest ticketRequest) {
 		User user = userRepository.findById(ticketRequest.getPassegerId()).get();
 		TripSchedule tripSchedule = tripScheduleRepository.findById(ticketRequest.getTripScheduleId()).get();
-		
-		
+
 		Ticket ticket = new Ticket(ticketRequest.getSeatNumber(), ticketRequest.getCancellable(),
-				ticketRequest.getJourneyDate(),tripSchedule,user);
+				ticketRequest.getJourneyDate(), tripSchedule, user);
 		return ResponseEntity.ok(ticketRepository.save(ticket));
 	}
-	
+
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-	public ResponseEntity<?> updateTicket(@PathVariable(value = "id") Long id, @Valid @RequestBody TicketRequest requestTicket) {
+	public ResponseEntity<?> updateTicket(@PathVariable(value = "id") Long id,
+			@Valid @RequestBody TicketRequest requestTicket) {
 		Ticket ticket = ticketRepository.findById(id).get();
 		if (ticket == null) {
 			return ResponseEntity.notFound().build();
@@ -71,7 +68,7 @@ public class TicketController {
 
 		return ResponseEntity.ok(updatedTicket);
 	}
-	
+
 	@GetMapping("/")
 	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
