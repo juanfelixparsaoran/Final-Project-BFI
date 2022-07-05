@@ -1,6 +1,7 @@
 package com.juan.bus.controller;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -55,6 +56,14 @@ public class UserController {
 
 	@Autowired
 	JwtUtils jwtUtils;
+	
+	@GetMapping("/{id}")
+	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> getUserById(@PathVariable(value = "id") Long id) {
+		User user = userRepository.findById(id).get();
+		return ResponseEntity.ok(user);
+	}
 
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
