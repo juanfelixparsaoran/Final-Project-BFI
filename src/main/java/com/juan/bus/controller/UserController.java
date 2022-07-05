@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.juan.bus.models.Agency;
+import com.juan.bus.models.Bus;
 import com.juan.bus.models.ERole;
 import com.juan.bus.models.Role;
 import com.juan.bus.models.User;
@@ -132,5 +133,18 @@ public class UserController {
 		User updatedUser = userRepository.save(user);
 
 		return ResponseEntity.ok(updatedUser);
+	}
+	
+	@DeleteMapping("/{id}")
+	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
+	@PreAuthorize("hasRole('ADMIN')")
+	public ResponseEntity<?> deleteUserById(@PathVariable(value = "id") Long id){
+		User user = userRepository.findById(id).get();
+		if (user == null) {
+			return ResponseEntity.notFound().build();
+		}
+		
+		userRepository.delete(user);
+		return ResponseEntity.ok(user);
 	}
 }

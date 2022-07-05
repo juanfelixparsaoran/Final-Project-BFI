@@ -39,7 +39,7 @@ public class BusController {
 
 	@GetMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getBusByAgencyId(@PathVariable(value = "id") Long id) {
 		List<Bus> bus = busRepository.findByAgencyId(id);
 		return ResponseEntity.ok(bus);
@@ -47,7 +47,7 @@ public class BusController {
 
 	@PostMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> addBusByUserId(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody BusCustomRequest busCustomRequest) {
 		Agency agency = agencyRepository.findByOwnerUser(id);
@@ -58,7 +58,7 @@ public class BusController {
 	
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> updateBusById(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody BusCustomRequest busCustomRequest) {
 		Bus bus = busRepository.findById(id).get();
@@ -76,6 +76,7 @@ public class BusController {
 	
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> deleteBusById(@PathVariable(value = "id") Long id){
 		Bus bus = busRepository.findById(id).get();
 		if (bus == null) {

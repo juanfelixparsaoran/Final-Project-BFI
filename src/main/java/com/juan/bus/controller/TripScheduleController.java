@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +29,7 @@ public class TripScheduleController {
 	
 	@PostMapping("/filter")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getTripBetweenTwoStop(@Valid @RequestBody GetTripScheduleRequest tripScheduleRequest ) {
 		List<TripSchedule> tripSchedule = tripScheduleRepository.findTripScheduleByDate(tripScheduleRequest.getTripDate());
 		return ResponseEntity.ok(tripSchedule);

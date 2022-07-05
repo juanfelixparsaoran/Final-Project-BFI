@@ -48,7 +48,7 @@ public class AgencyController {
 
 	@PostMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> addAgencyByUserId(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody AgencyRequest agencyCustomRequest) {
 		User user = userRepository.findById(id).get();
@@ -58,7 +58,7 @@ public class AgencyController {
 	
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> updateAgencyByOwnerId(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody AgencyRequest agencyCustomRequest) {
 		Agency agency = agencyRepository.findByOwnerUser(id);

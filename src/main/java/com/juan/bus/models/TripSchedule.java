@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "trip_schedule")
 public class TripSchedule {
@@ -25,6 +27,7 @@ public class TripSchedule {
 	@JoinColumn(name = "trip_id")
 	private Trip tripDetail;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "tripSchedule", cascade = CascadeType.ALL)
 	private Set<Ticket> ticketsSold;
 	

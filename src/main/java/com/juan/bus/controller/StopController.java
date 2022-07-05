@@ -31,14 +31,14 @@ public class StopController {
 	StopRepository stopRepository;
 
 	@GetMapping("/")
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	public ResponseEntity<?> getAllStops() {
 		return ResponseEntity.ok(stopRepository.findAll());
 	}
 
 	@PostMapping("/")
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
 	public ResponseEntity<?> addStop(@Valid @RequestBody Stop stop) {
 		return ResponseEntity.ok(stopRepository.save(stop));
@@ -46,7 +46,7 @@ public class StopController {
 	
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> updateStopById(@PathVariable(value = "id") Long id,
 			@Valid @RequestBody Stop requestStop) {
 		Stop stop = stopRepository.findById(id).get();
@@ -64,6 +64,7 @@ public class StopController {
 	
 	@DeleteMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> deleteStopById(@PathVariable(value = "id") Long id){
 		Stop stop = stopRepository.findById(id).get();
 		if (stop == null) {

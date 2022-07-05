@@ -47,7 +47,7 @@ public class TripController {
 
 	@PostMapping("/")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> addTrip(@Valid @RequestBody TripRequest tripRequest) {
 		Agency agency = agencyRepository.findById(tripRequest.getAgencyId()).get();
 		Bus bus = busRepository.findById(tripRequest.getBusId()).get();
@@ -59,7 +59,7 @@ public class TripController {
 
 	@GetMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getTripByAgencyId(@PathVariable(value = "id") Long id) {
 		List<Trip> trip = tripRepository.findByAgencyId(id);
 		return ResponseEntity.ok(trip);
@@ -67,7 +67,8 @@ public class TripController {
 	
 	@GetMapping("/{id_stop1}/{id_stop2}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getTripBetweenTwoStop(@PathVariable(value = "id_stop1") Long id_stop1,@PathVariable(value = "id_stop2") Long id_stop2 ) {
 		List<Trip> trip = tripRepository.findTripsByStops(id_stop1,id_stop2);
 		return ResponseEntity.ok(trip);
@@ -75,9 +76,9 @@ public class TripController {
 	
 	@PutMapping("/{id}")
 	@ApiOperation(value = "", authorizations = { @Authorization(value = "apiKey") })
-//	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> updateTripById(@PathVariable(value = "id") Long id,
-			@Valid @RequestBody Trip requestTrip) {
+			@Valid @RequestBody TripRequest requestTrip) {
 		Trip trip = tripRepository.findById(id).get();
 		if (trip == null) {
 			return ResponseEntity.notFound().build();
