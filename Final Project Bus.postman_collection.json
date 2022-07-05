@@ -1,0 +1,802 @@
+{
+	"info": {
+		"_postman_id": "0bbe2c77-7025-48b1-86a9-930b293a7bfe",
+		"name": "Final Project Bus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8059508"
+	},
+	"item": [
+		{
+			"name": "Final Project",
+			"item": [
+				{
+					"name": "Bus",
+					"item": [
+						{
+							"name": "add bus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\" : \"TTI5\",\r\n    \"capacity\" : 30,\r\n    \"make\" : 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/bus/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"bus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get agency bus",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/bus/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"bus",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update bus",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\" : \"TTII\",\r\n    \"capacity\" : 30,\r\n    \"make\" : 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/bus/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"bus",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete bus",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/bus/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"bus",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stop",
+					"item": [
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"4-2\",\r\n    \"name\": \"Karangi\",\r\n    \"detail\": \"Anyar\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/stop/",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"stop",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update stop",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"1-3\",\r\n    \"name\": \"Karang\",\r\n    \"detail\": \"Teluk\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/stop/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"stop",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete stop",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/stop/6",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"stop",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "list all stop",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/stop/",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"stop",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Agency",
+					"item": [
+						{
+							"name": "add agency by owner",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\" : \"TBA\",\r\n    \"details\" : \"PT Toba Sejahtera\",\r\n    \"name\" : \"Bus Samosir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/agency/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"agency",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update agency by owner",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\" : \"TBS\",\r\n    \"details\" : \"PT Toba Sejahtera\",\r\n    \"name\" : \"Bus Samosir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/agency/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"agency",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete agency",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/agency/3",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"agency",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get agency by owner id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/agency/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"agency",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Trip",
+					"item": [
+						{
+							"name": "Find trips between two stops",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/trip/5/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"trip",
+										"5",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add trip",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fare\" : 20000,\r\n    \"journeyTime\" : 5,\r\n    \"agencyId\" : 2,\r\n    \"sourceStopId\" : 1,\r\n    \"destStopId\" : 1,\r\n    \"busId\" : 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/trip/",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"trip",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get trip by id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/trip/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"trip",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update trip",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fare\" : 20000,\r\n    \"journeyTime\" : 5\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/trip/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"trip",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TripSchedule",
+					"item": [
+						{
+							"name": "filter trip by date",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tripDate\" : \"2022-07-06\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/tripschedule/filter",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"tripschedule",
+										"filter"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ticket",
+					"item": [
+						{
+							"name": "Book ticket",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3aXBlcXkxMiIsImlhdCI6MTY1Njk5MDg3NiwiZXhwIjoxNjU3MDc3Mjc2fQ.X9ZyB16WQK6cLWYrMwv1nyZbTYMQ-JiMW7yvdBaMtEdMJtcX7Pt_UyXUjhal9FwbGgh9mKbteNTyUceE9Rtkug",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatNumber\" : 2,\r\n    \"cancellable\" : true,\r\n    \"journeyDate\" : \"2022-07-06\",\r\n    \"passegerId\" : 3,\r\n    \"tripScheduleId\" : 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/ticket/book/",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"ticket",
+										"book",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update ticket",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"seatNumber\" : 2,\r\n    \"cancellable\" : true,\r\n    \"journeyDate\" : \"2022-07-06\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/ticket/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"ticket",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Add User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"juan@gmail.com\",\r\n  \"firstName\": \"Juas\",\r\n  \"lastName\": \"Felx\",\r\n  \"mobileNumber\": \"086728391029\",\r\n  \"password\": \"dragonnest12\",\r\n  \"role\": [\r\n    \"admin\"\r\n    ],\r\n  \"username\": \"wipeqy8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/user/signup",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3aXBlcXkxMiIsImlhdCI6MTY1Njk5MDg3NiwiZXhwIjoxNjU3MDc3Mjc2fQ.X9ZyB16WQK6cLWYrMwv1nyZbTYMQ-JiMW7yvdBaMtEdMJtcX7Pt_UyXUjhal9FwbGgh9mKbteNTyUceE9Rtkug",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"juanfelix@gmail.com\",\r\n  \"firstName\": \"Juang\",\r\n  \"lastName\": \"Felix\",\r\n  \"mobileNumber\": \"086728391029\",\r\n  \"password\": \"dragonnest12\",\r\n  \"role\": [\r\n    \"ROLE_ADMIN\"\r\n  ],\r\n  \"username\": \"wipeqy12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/v1/user/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqZnB0MiIsImlhdCI6MTY1NzAyMjQ5NiwiZXhwIjoxNjU3MTA4ODk2fQ.ye8XANnLtoVu38RjMWVOdyvFDQqxLyxD3cP-uTxO9LnGxr0hYm6yFr5JC6S4XBYKNtxVetjETDW1SXCd0J6ZDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/user/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ3aXBlcXk4IiwiaWF0IjoxNjU3MDI3ODMxLCJleHAiOjE2NTcxMTQyMzF9.7LCtjkiC3leffZ5d8Y2WDIyXLnX-QcNsXPUjfZeoZ0TEdd5lMmzlhaFAh4f12_3qpFUnUOEf3rekuemPAQxOEQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8081/api/v1/user/2",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\" : \"dragonnest12\",\r\n    \"username\" : \"wipeqy8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/api/auth/",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"auth",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

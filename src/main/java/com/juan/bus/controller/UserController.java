@@ -154,6 +154,6 @@ public class UserController {
 		}
 		
 		userRepository.delete(user);
-		return ResponseEntity.ok(user);
+		return ResponseEntity.ok("Sukses delete");
 	}
 }
