@@ -32,41 +32,6 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@NotBlank
-	@Size(max = 50)
-	private String username;
-	
-	@NotBlank
-	@Size(max = 50)
-	@Email
-	private String email;
-	
-	@NotBlank
-	@Size(max = 120)
-	@JsonIgnore
-	private String password;
-	
-	@NotBlank
-	@Size(max = 120)
-	private String firstName;
-	
-	@NotBlank
-	@Size(max = 120)
-	private String lastName;
-	
-	@NotBlank
-	@Size(max = 120)
-	private String mobileNumber;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "user_roles", 
-				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<>();
 	
 
 	public Long getId() {
@@ -173,4 +138,40 @@ public class User {
 				&& Objects.equals(mobileNumber, other.mobileNumber) && Objects.equals(password, other.password)
 				&& Objects.equals(roles, other.roles) && Objects.equals(username, other.username);
 	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@NotBlank
+	@Size(max = 50)
+	private String username;
+	
+	@NotBlank
+	@Size(max = 50)
+	@Email
+	private String email;
+	
+	@NotBlank
+	@Size(max = 120)
+	@JsonIgnore
+	private String password;
+	
+	@NotBlank
+	@Size(max = 120)
+	private String firstName;
+	
+	@NotBlank
+	@Size(max = 120)
+	private String lastName;
+	
+	@NotBlank
+	@Size(max = 120)
+	private String mobileNumber;
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "user_roles", 
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<>();
 }

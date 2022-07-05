@@ -37,10 +37,10 @@ public class Ticket {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ticket(Long id, int seatNumber, Boolean cancellable, String journeyDate, TripSchedule tripSchedule,
+	public Ticket(int seatNumber, Boolean cancellable, String journeyDate, TripSchedule tripSchedule,
 			User passenger) {
 		super();
-		this.id = id;
+
 		this.seatNumber = seatNumber;
 		this.cancellable = cancellable;
 		this.journeyDate = journeyDate;

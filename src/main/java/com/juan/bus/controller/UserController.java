@@ -16,6 +16,7 @@ import com.juan.bus.models.ERole;
 import com.juan.bus.models.Role;
 import com.juan.bus.models.User;
 import com.juan.bus.payload.request.SignupCustomRequest;
+import com.juan.bus.payload.request.SignupRequest;
 import com.juan.bus.payload.request.UserCustomRequest;
 import com.juan.bus.payload.request.UserPasswordRequest;
 import com.juan.bus.payload.response.MessageResponse;
@@ -55,18 +56,20 @@ public class UserController {
 	JwtUtils jwtUtils;
 
 	@PostMapping("/signup")
-	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupCustomRequest signupCustomRequest) {
-		if (userRepository.existsByUsername(signupCustomRequest.getUsername())) {
+	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signupRequest) {
+		if (userRepository.existsByUsername(signupRequest.getUsername())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Username is already taken!"));
 		}
 
-		if (userRepository.existsByEmail(signupCustomRequest.getEmail())) {
+		if (userRepository.existsByEmail(signupRequest.getEmail())) {
 			return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
 		}
-		User user = new User(signupCustomRequest.getUsername(),signupCustomRequest.getEmail(),encoder.encode(signupCustomRequest.getPassword()), signupCustomRequest.getFirstName(), signupCustomRequest.getLastName(),
-				signupCustomRequest.getMobileNumber());
+		
+		User user = new User(signupRequest.getUsername(),signupRequest.getEmail(), encoder.encode(signupRequest.getPassword()),
+				signupRequest.getFirstName(), signupRequest.getLastName(),
+				signupRequest.getMobileNumber());
 
-		Set<String> strRoles = signupCustomRequest.getRole();
+		Set<String> strRoles = signupRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
@@ -91,6 +94,7 @@ public class UserController {
 
 		user.setRoles(roles);
 		userRepository.save(user);
+
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 	}

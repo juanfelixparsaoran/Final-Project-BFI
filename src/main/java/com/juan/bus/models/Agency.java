@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="agency")
 public class Agency {
@@ -122,6 +124,7 @@ public class Agency {
 	@JoinColumn(name = "owner_user_id")
 	private User owner;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "agency", cascade = CascadeType.ALL)
 	private Set<Bus> buses;
 	

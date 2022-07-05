@@ -43,9 +43,8 @@ public class Trip {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Trip(Long id, int fare, int journeyTime, Stop sourceStop, Stop destStop, Bus bus, Agency agency) {
+	public Trip(int fare, int journeyTime, Stop sourceStop, Stop destStop, Bus bus, Agency agency) {
 		super();
-		this.id = id;
 		this.fare = fare;
 		this.journeyTime = journeyTime;
 		this.sourceStop = sourceStop;

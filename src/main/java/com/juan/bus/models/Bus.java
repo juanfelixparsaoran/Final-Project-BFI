@@ -33,9 +33,8 @@ public class Bus {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Bus(Long id, String code, int capacity, String make, Agency agency) {
+	public Bus(String code, int capacity, String make, Agency agency) {
 		super();
-		this.id = id;
 		this.code = code;
 		this.capacity = capacity;
 		this.make = make;
