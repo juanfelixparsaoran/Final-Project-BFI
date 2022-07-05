@@ -2,7 +2,7 @@ Nama 			: Juan Felix Parsaoran Tarigan</br>
 Kode Peserta 	: JVSB001ONL017
 
 
-#FINAL PROJECT - BUS BOOKING REST API
+##FINAL PROJECT - BUS BOOKING REST API
 
 Simple bus booking api for java spring boot final project BFI BTPD
 
